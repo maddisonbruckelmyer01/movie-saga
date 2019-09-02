@@ -20,11 +20,10 @@ class Details extends Component {
                 <button onClick={this.handleSecondClick}>Edit</button>
                 <h3>{this.props.reduxStore.details.title}</h3>
                 <p>{this.props.reduxStore.details.description}</p>
-                <h5>Genres</h5>
                 <ul>
                 {
                     this.props.reduxStore.genres.map((genre) => {
-                        return <li>{genre.genre}</li>
+                        return (<><h4>Genres</h4> <li>{genre.genre}</li></>)
                     })
                 }
                 </ul>
