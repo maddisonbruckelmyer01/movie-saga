@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import MovieItem from '../MovieItem/MovieItem';
-import Poster from '../Poster/Poster'
+
 
 class Movies extends Component {
     
@@ -11,17 +10,23 @@ class Movies extends Component {
         })
     }
 
-    render() {
+    
+    handleClick = (id) => {
+        console.log('picture clicked')
+        this.props.dispatch({
+            type: 'FETCH_DETAILS',
+            payload: id
+        })
+        this.props.history.push('/details');
+    }
 
+
+    render() { 
         return(
             <div>
-                <pre>{JSON.stringify(this.props.reduxStore)}</pre>
                 {this.props.reduxStore.movies.map((movie) => {
-                    return (<>
-                        <Poster poster={movie.poster} />
-                        <MovieItem key={movie.id} movie={movie} />
-                         </>
-                    );
+                    return (<><img src={movie.poster} alt={movie.title} onClick={() => {this.handleClick(movie.id)}}/>
+                        <h4>{movie.title}</h4> <p>{movie.description}</p> </>);
                 })}
             </div>
         )

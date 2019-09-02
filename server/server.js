@@ -11,6 +11,8 @@ app.use(express.static('build'));
 const moviesRouter = require('./routes/movies.router');
 app.use('/api/movies', moviesRouter);
 
+
+
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
     console.log('Listening on port: ', port);
