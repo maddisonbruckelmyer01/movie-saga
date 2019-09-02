@@ -16,6 +16,20 @@ import createSagaMiddleware from 'redux-saga';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
     yield takeEvery('FETCH_DETAILS', fetchDetails);
+    yield takeEvery('FETCH_GENRES', fetchGenres);
+}
+
+function* fetchGenres(action) {
+    try {
+        let response = yield axios.get(`/api/genres/${action.payload}`)
+        console.log('fetch genres response', response)
+        yield put({
+            type: 'SET_GENRES',
+            payload: response.data
+        })
+    } catch (error) {
+        console.log('Could not get current genres:', error);
+    }
 }
 
 function* fetchDetails(action) {

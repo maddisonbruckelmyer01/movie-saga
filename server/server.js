@@ -9,7 +9,9 @@ app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/
 const moviesRouter = require('./routes/movies.router');
+const genresRouter = require('./routes/genres.router')
 app.use('/api/movies', moviesRouter);
+app.use('/api/genres', genresRouter);
 
 
 

@@ -17,6 +17,10 @@ class Movies extends Component {
             type: 'FETCH_DETAILS',
             payload: id
         })
+        this.props.dispatch({
+            type: 'FETCH_GENRES',
+            payload: id
+        })
         this.props.history.push('/details');
     }
 
